@@ -5,7 +5,7 @@ __COMPONENT DESCRIPTION GOES HERE__
 
 ## Demo & Examples
 
-Live demo: [zerocooljs.github.io/https://github.com/zerocooljs/react-zjs-video-component](http://zerocooljs.github.io/https://github.com/zerocooljs/react-zjs-video-component/)
+Live demo: [zerocooljs.github.io/react-zjs-video-component](http://zerocooljs.github.io/react-zjs-video-component/)
 
 To build the examples locally, run:
 
