@@ -32,7 +32,9 @@ var config = {
             'material-ui/lib/card/card-media',
             'material-ui/lib/text-field',
             'material-ui/lib/lists/list',
-            'material-ui/lib/lists/list-item'
+            'material-ui/lib/lists/list-item',
+            'material-ui/lib/divider',
+            'inputmask-core'
         ],
         less: {
             path: 'less',

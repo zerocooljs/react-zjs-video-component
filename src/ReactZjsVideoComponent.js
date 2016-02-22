@@ -48,8 +48,14 @@ var ReactZjsVideoComponent = React.createClass({
             currentTime: null,
             pausedVideo: false,
             newClip: false,
-            startTimeClip: null
+            startTimeClip: null,
+            duration: null
         };
+    },
+    videoData(e){
+        this.setState({
+            duration: Math.floor(e.target.duration)
+        });
     },
     render () {
         return (
@@ -61,7 +67,6 @@ var ReactZjsVideoComponent = React.createClass({
                     iconElementRight={
                     <FloatingActionButton
                         mini={true}
-//                         onTouchEnd={this.addClip}
                         onMouseDown={this.addClip}
                     >
                         <ContentAdd />
@@ -72,6 +77,7 @@ var ReactZjsVideoComponent = React.createClass({
                     videoUrl={this.state.videoUrl}
                     onTimeupdate={this.timeChanged}
                     paused={this.state.pausedVideo}
+                    onLoadMetaData={this.videoData}
                 />
                 <Clips
                     open={this.state.clipsNav}
@@ -83,6 +89,7 @@ var ReactZjsVideoComponent = React.createClass({
                     onClose={this.addClip}
                     startTime={this.state.currentTime}
                     onOk={this.saveClip}
+                    duration={this.state.duration}
                 />
             </div>
         );

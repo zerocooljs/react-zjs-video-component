@@ -27,6 +27,7 @@ var _Video = React.createClass({
                             width="100%"
                             onTimeUpdate={this.props.onTimeupdate}
                             ref={c=>{this._video = c}}
+                            onLoadedMetadata={this.props.onLoadMetaData}
                             controls
                         >
                             <source src={this.props.videoUrl}/>

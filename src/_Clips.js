@@ -7,6 +7,7 @@ import LeftNav from 'material-ui/lib/left-nav';
 import AppBar from 'material-ui/lib/app-bar';
 import List from 'material-ui/lib/lists/list';
 import ListItem from 'material-ui/lib/lists/list-item';
+import Divider from 'material-ui/lib/divider';
 
 var _Clips = React.createClass({
     toggleLeftNav(){
@@ -29,7 +30,13 @@ var _Clips = React.createClass({
         return (
             <LeftNav width={400} docked={false} openRight={true} open={this.props.open}>
                 <AppBar title="Clips" onLeftIconButtonTouchTap={this.toggleLeftNav}/>
-                <List subheader="Recent chats">
+                <List subheader="Full Video">
+                    <ListItem
+                        primaryText="Full Video"
+                    />
+                </List>
+                <Divider />
+                <List subheader="Clips">
                     {clips}
                 </List>
             </LeftNav>
