@@ -34,7 +34,13 @@ var config = {
             'material-ui/lib/lists/list',
             'material-ui/lib/lists/list-item',
             'material-ui/lib/divider',
-            'inputmask-core'
+            'inputmask-core',
+            'material-ui/lib/styles/colors',
+            'material-ui/lib/icon-button',
+            'material-ui/lib/svg-icons/navigation/more-vert',
+            'material-ui/lib/menus/icon-menu',
+            'material-ui/lib/menus/menu-item',
+            'material-ui/lib/svg-icons/action/theaters'
         ],
         less: {
             path: 'less',

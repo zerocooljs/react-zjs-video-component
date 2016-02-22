@@ -8,14 +8,23 @@ import CardMedia from 'material-ui/lib/card/card-media';
 
 var _Video = React.createClass({
     componentDidMount(){
-        this.pauseVideo();
+//         this._video.load();
+//         this.pauseVideo();
     },
     componentDidUpdate(){
+//         this._video.load();
         this.pauseVideo();
+        this.loadVideo();
     },
     pauseVideo(){
         if(this.props.paused && !this._video.paused){
             return this._video.pause();
+        }
+    },
+    loadVideo(){
+        if(this.props.loadVideo){
+            this._video.load();
+            this._video.play();
         }
     },
     render(){
@@ -28,9 +37,10 @@ var _Video = React.createClass({
                             onTimeUpdate={this.props.onTimeupdate}
                             ref={c=>{this._video = c}}
                             onLoadedMetadata={this.props.onLoadMetaData}
+                            src={this.props.videoUrl}
                             controls
+                            autoPlay
                         >
-                            <source src={this.props.videoUrl}/>
                         </video>
                     </div>
                 </CardMedia>

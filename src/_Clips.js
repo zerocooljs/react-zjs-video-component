@@ -8,6 +8,13 @@ import AppBar from 'material-ui/lib/app-bar';
 import List from 'material-ui/lib/lists/list';
 import ListItem from 'material-ui/lib/lists/list-item';
 import Divider from 'material-ui/lib/divider';
+import Colors from 'material-ui/lib/styles/colors';
+import IconButton from 'material-ui/lib/icon-button';
+import Theaters from 'material-ui/lib/svg-icons/action/theaters';
+import MoreVertIcon from 'material-ui/lib/svg-icons/navigation/more-vert';
+import IconMenu from 'material-ui/lib/menus/icon-menu';
+import MenuItem from 'material-ui/lib/menus/menu-item';
+
 
 var _Clips = React.createClass({
     toggleLeftNav(){
@@ -15,14 +22,37 @@ var _Clips = React.createClass({
         this.props.onToggle();
     },
     render () {
-        let clips = this.props.clips.map(function (clip) {
+        const iconButtonElement = (
+            <IconButton
+                touch={true}
+                tooltip="more"
+                tooltipPosition="bottom-left"
+            >
+                <MoreVertIcon color={Colors.grey400} />
+            </IconButton>
+        );
+
+        const rightIconMenu = (
+            <IconMenu iconButtonElement={iconButtonElement}>
+                <MenuItem>Play</MenuItem>
+                <MenuItem>Edit</MenuItem>
+                <MenuItem>Delete</MenuItem>
+            </IconMenu>
+        );
+        let clips = this.props.clips.map( (clip, index) => {
             return (
                 <ListItem
-                    primaryText={
-                    <div>
-                        <span>{clip.startTime}</span>
-                        <span>{clip.endTime}</span>
-                    </div>
+                    key={clip.id}
+                    id={index}
+                    rightIconButton={rightIconMenu}
+                    leftIcon={<Theaters color={Colors.darkBlack} />}
+                    onTouchTap={this.props.onClipTap}
+                    secondaryTextLines={1}
+                    primaryText={clip.name}
+                    secondaryText={
+                        <p>
+                          {clip.startTime} / {clip.endTime}
+                        </p>
                     }
                 />
             );

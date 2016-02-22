@@ -22,6 +22,7 @@ var _NewClip = React.createClass({
         return startTime;
     }, getInitialState(){
         let startTime = this.getStartTime(this.props.startTime);
+        let id = this.props.id;
         return {
             startTime,
             endTime: null,
@@ -29,11 +30,13 @@ var _NewClip = React.createClass({
             errorStart: null,
             errorEnd: null,
             errorName: null,
-            canSave: false
+            canSave: false,
+            id
         }
     },
     saveClip(){
         this.props.onOk({
+            id:(this.state.id)?this.state.id:new Date().getUTCMilliseconds(),
             name: this.state.name,
             startTime: this.state.startTime,
             endTime: this.state.endTime

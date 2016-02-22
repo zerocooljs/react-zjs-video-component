@@ -49,13 +49,23 @@ var ReactZjsVideoComponent = React.createClass({
             pausedVideo: false,
             newClip: false,
             startTimeClip: null,
-            duration: null
+            duration: null,
+            suffixUrl: '',
+            loadClip: false
         };
     },
     videoData(e){
         this.setState({
             duration: Math.floor(e.target.duration)
         });
+    },
+    clipPlay(e){
+        let clip = this.state.clips[ e.currentTarget.id ];
+        this.setState({
+            loadClip: true,
+            suffixUrl: `#t=${clip.startTime},${clip.endTime}`
+        });
+        this.toggleLeftNav();
     },
     render () {
         return (
@@ -74,15 +84,17 @@ var ReactZjsVideoComponent = React.createClass({
                     }
                 />
                 <Video
-                    videoUrl={this.state.videoUrl}
+                    videoUrl={this.state.videoUrl + this.state.suffixUrl}
                     onTimeupdate={this.timeChanged}
                     paused={this.state.pausedVideo}
                     onLoadMetaData={this.videoData}
+                    loadVideo={this.state.loadClip}
                 />
                 <Clips
                     open={this.state.clipsNav}
                     onToggle={this.toggleLeftNav}
                     clips={this.state.clips}
+                    onClipTap={this.clipPlay}
                 />
                 <NewClip
                     open={this.state.newClip}
