@@ -22,7 +22,19 @@ var config = {
             'classnames',
             'react',
             'react-dom',
-            'material-ui/lib/app-bar'
+            'react-tap-event-plugin',
+            'material-ui/lib/app-bar',
+            'material-ui/lib/floating-action-button',
+            'material-ui/lib/svg-icons/content/add',
+            'material-ui/lib/dialog',
+            'material-ui/lib/flat-button',
+            'material-ui/lib/card/card',
+            'material-ui/lib/card/card-media',
+            'material-ui/lib/text-field',
+            'material-ui/lib/lists/list',
+            'material-ui/lib/lists/list-item',
+            'material-ui/lib/divider',
+            'inputmask-core'
         ],
         less: {
             path: 'less',
