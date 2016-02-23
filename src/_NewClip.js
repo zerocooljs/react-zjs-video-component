@@ -271,7 +271,10 @@ var _NewClip = React.createClass({
                         onChange={this._handleChange}
                     />
                     <br/>
-                    <TagsInput value={this.state.tags} onChange={this._handleTags} />
+                    <br />
+                    <label class="mdl-textfield__label" for="tagsInput">Tags...</label>
+                    <TagsInput id="tagsInput" value={this.state.tags} onChange={this._handleTags} />
+
                 </div>
 
             </Dialog>

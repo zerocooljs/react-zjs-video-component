@@ -48,7 +48,8 @@ var config = {
             'material-ui/lib/linear-progress',
             'react-hotkeys',
             'react-localstorage',
-            'react-tagsinput'
+            'react-tagsinput',
+            'material-ui/lib/badge'
         ],
         less: {
             path: 'less',

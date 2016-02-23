@@ -79,7 +79,7 @@ var _Clips = React.createClass({
             tags
         });
         let init = true;
-        if(tags.length === 0){
+        if (tags.length === 0) {
             init = false;
         }
         let clips = this.state.clips.map((clip)=> {
@@ -88,7 +88,7 @@ var _Clips = React.createClass({
         });
         for (let tag of tags) {
             clips = clips.map((clip)=> {
-                if (clip.tags.indexOf(tag)!== -1) {
+                if (clip.tags.indexOf(tag) !== -1) {
                     clip.hide = false;
                 }
                 return clip;
@@ -150,9 +150,13 @@ var _Clips = React.createClass({
             );
         });
         return (
-            <LeftNav width={400} docked={false} openRight={true} open={this.props.open} >
+            <LeftNav width={400} docked={false} openRight={true} open={this.props.open}>
                 <AppBar title="Clips" onLeftIconButtonTouchTap={this.toggleLeftNav}/>
-                <TagsInput value={this.state.tags} onChange={this._filterClips}/>
+                <List subheader="Search by tag...">
+                    <ListItem>
+                        <TagsInput value={this.state.tags} onChange={this._filterClips}/>
+                    </ListItem>
+                </List>
                 <Divider />
                 <List subheader="Full Video">
                     <ListItem

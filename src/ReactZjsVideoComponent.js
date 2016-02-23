@@ -13,12 +13,15 @@ import moment from 'moment';
 import {HotKeys} from 'react-hotkeys';
 import LocalStorageMixin from 'react-localstorage';
 import shortid from 'shortid';
+import Badge from 'material-ui/lib/badge';
+import IconButton from 'material-ui/lib/icon-button';
+import Subscriptions from 'material-ui/lib/svg-icons/av/subscriptions';
 
 
 injectTapEventPlugin();
 
 var ReactZjsVideoComponent = React.createClass({
-    mixins: [LocalStorageMixin],
+    mixins: [ LocalStorageMixin ],
     toggleLeftNav(force){
         if (typeof force !== 'undefined') {
             return this.setState({
@@ -78,7 +81,7 @@ var ReactZjsVideoComponent = React.createClass({
     getDefaultProps(){
         return {
             edit: true,
-            stateFilterKeys: ['clips']
+            stateFilterKeys: [ 'clips' ]
         }
     },
     videoData(e){
@@ -126,7 +129,7 @@ var ReactZjsVideoComponent = React.createClass({
     },
     deleteClip(index){
         let clips = this.state.clips;
-        clips.splice(index,1);
+        clips.splice(index, 1);
         this.setState({
             clips
         });
@@ -157,7 +160,7 @@ var ReactZjsVideoComponent = React.createClass({
             this.setState({
                 forceLoaded: false
             });
-            if(wait) {
+            if (wait) {
                 return setTimeout(()=> {
                     this.clipPlay(index)
                 }, 3000);
