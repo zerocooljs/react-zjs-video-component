@@ -21,6 +21,8 @@ import Dialog from 'material-ui/lib/dialog';
 import FlatButton from 'material-ui/lib/flat-button';
 import moment from 'moment';
 import VideoCam from 'material-ui/lib/svg-icons/av/videocam';
+import TagsInput from 'react-tagsinput';
+
 
 
 var _Clips = React.createClass({
@@ -37,7 +39,8 @@ var _Clips = React.createClass({
     getInitialState(){
         return {
             delete: false,
-            deleteItem: null
+            deleteItem: null,
+            tags:[]
         };
     },
     formatTime(value) {
@@ -53,12 +56,18 @@ var _Clips = React.createClass({
     handleClose(){
         this.setState({
             delete: false,
-            deleteItem: null
+            deleteItem: null,
+            tags:[]
         });
     },
     handleDelete(){
         this.props.onClipDelete(this.state.deleteItem);
         this.handleClose();
+    },
+    _filterClips(tags){
+        this.setState({
+            tags
+        });
     },
     render () {
         const iconButtonElement = (
@@ -100,11 +109,12 @@ var _Clips = React.createClass({
                     }
                     leftIcon={<Theaters color={Colors.darkBlack} />}
                     onTouchTap={this.props.onClipTap}
-                    secondaryTextLines={1}
+                    secondaryTextLines={2}
                     primaryText={clip.name}
                     secondaryText={
                         <p>
-                          {clip.startTime} / {clip.endTime}
+                          {clip.startTime} / {clip.endTime}<br />
+                          {clip.tags.join()}
                         </p>
                     }
                 />
@@ -113,6 +123,8 @@ var _Clips = React.createClass({
         return (
             <LeftNav width={400} docked={false} openRight={true} open={this.props.open}>
                 <AppBar title="Clips" onLeftIconButtonTouchTap={this.toggleLeftNav}/>
+                <TagsInput value={this.state.tags} onChange={this._filterClips} />
+                <Divider />
                 <List subheader="Full Video">
                     <ListItem
                         leftIcon={<VideoCam color={Colors.darkBlack} />}

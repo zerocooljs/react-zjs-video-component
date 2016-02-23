@@ -11,7 +11,6 @@ var App = React.createClass({
 					name="demo"
 					edit={true}
 				/>
-				
 			</div>
 		);
 	}
