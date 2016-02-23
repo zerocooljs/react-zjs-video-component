@@ -23,7 +23,7 @@ The easiest way to use zjs-react-video is to install it from NPM and include it 
 
 You can also use the standalone build by including `dist/zjs-react-video.js` in your page. If you use this, make sure you have already included React, and it is available as a global variable.
 
-```npm
+```
 npm install zjs-react-video --save
 ```
 
@@ -32,7 +32,7 @@ npm install zjs-react-video --save
 
 __You only have to import the component and use it.__
 
-```jsx harmony
+```
 import ZjsReactVideo from 'zjs-react-video';
 
 <ZjsReactVideo
@@ -54,7 +54,7 @@ import ZjsReactVideo from 'zjs-react-video';
 
 __Please include these 2 tags at the HEAD__
 
-```html
+```
 <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 ```
