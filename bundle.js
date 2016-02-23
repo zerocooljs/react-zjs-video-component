@@ -1,4 +1,4 @@
-(function(f){if(typeof exports==="object"&&typeof module!=="undefined"){module.exports=f()}else if(typeof define==="function"&&define.amd){define([],f)}else{var g;if(typeof window!=="undefined"){g=window}else if(typeof global!=="undefined"){g=global}else if(typeof self!=="undefined"){g=self}else{g=this}g.ZjsReactVideo = f()}})(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+require=(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 /*!
   * Bowser - a browser detector
   * https://github.com/ded/bowser
@@ -34577,7 +34577,729 @@ if ("production" !== 'production') {
 module.exports = warning;
 
 },{}],258:[function(require,module,exports){
-(function (global){
+/**
+ * Created by zerocooljs on 2/20/16.
+ */
+'use strict';
+Object.defineProperty(exports, '__esModule', {
+    value: true
+});
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _materialUiLibLeftNav = require('material-ui/lib/left-nav');
+
+var _materialUiLibLeftNav2 = _interopRequireDefault(_materialUiLibLeftNav);
+
+var _materialUiLibAppBar = require('material-ui/lib/app-bar');
+
+var _materialUiLibAppBar2 = _interopRequireDefault(_materialUiLibAppBar);
+
+var _materialUiLibListsList = require('material-ui/lib/lists/list');
+
+var _materialUiLibListsList2 = _interopRequireDefault(_materialUiLibListsList);
+
+var _materialUiLibListsListItem = require('material-ui/lib/lists/list-item');
+
+var _materialUiLibListsListItem2 = _interopRequireDefault(_materialUiLibListsListItem);
+
+var _materialUiLibDivider = require('material-ui/lib/divider');
+
+var _materialUiLibDivider2 = _interopRequireDefault(_materialUiLibDivider);
+
+var _materialUiLibStylesColors = require('material-ui/lib/styles/colors');
+
+var _materialUiLibStylesColors2 = _interopRequireDefault(_materialUiLibStylesColors);
+
+var _materialUiLibIconButton = require('material-ui/lib/icon-button');
+
+var _materialUiLibIconButton2 = _interopRequireDefault(_materialUiLibIconButton);
+
+var _materialUiLibSvgIconsActionTheaters = require('material-ui/lib/svg-icons/action/theaters');
+
+var _materialUiLibSvgIconsActionTheaters2 = _interopRequireDefault(_materialUiLibSvgIconsActionTheaters);
+
+var _materialUiLibSvgIconsNavigationMoreVert = require('material-ui/lib/svg-icons/navigation/more-vert');
+
+var _materialUiLibSvgIconsNavigationMoreVert2 = _interopRequireDefault(_materialUiLibSvgIconsNavigationMoreVert);
+
+var _materialUiLibMenusIconMenu = require('material-ui/lib/menus/icon-menu');
+
+var _materialUiLibMenusIconMenu2 = _interopRequireDefault(_materialUiLibMenusIconMenu);
+
+var _materialUiLibMenusMenuItem = require('material-ui/lib/menus/menu-item');
+
+var _materialUiLibMenusMenuItem2 = _interopRequireDefault(_materialUiLibMenusMenuItem);
+
+var _materialUiLibSvgIconsAvPlayCircleFilled = require('material-ui/lib/svg-icons/av/play-circle-filled');
+
+var _materialUiLibSvgIconsAvPlayCircleFilled2 = _interopRequireDefault(_materialUiLibSvgIconsAvPlayCircleFilled);
+
+var _materialUiLibSvgIconsEditorModeEdit = require('material-ui/lib/svg-icons/editor/mode-edit');
+
+var _materialUiLibSvgIconsEditorModeEdit2 = _interopRequireDefault(_materialUiLibSvgIconsEditorModeEdit);
+
+var _materialUiLibSvgIconsContentRemove = require('material-ui/lib/svg-icons/content/remove');
+
+var _materialUiLibSvgIconsContentRemove2 = _interopRequireDefault(_materialUiLibSvgIconsContentRemove);
+
+var _materialUiLibDialog = require('material-ui/lib/dialog');
+
+var _materialUiLibDialog2 = _interopRequireDefault(_materialUiLibDialog);
+
+var _materialUiLibFlatButton = require('material-ui/lib/flat-button');
+
+var _materialUiLibFlatButton2 = _interopRequireDefault(_materialUiLibFlatButton);
+
+var _moment = require('moment');
+
+var _moment2 = _interopRequireDefault(_moment);
+
+var _materialUiLibSvgIconsAvVideocam = require('material-ui/lib/svg-icons/av/videocam');
+
+var _materialUiLibSvgIconsAvVideocam2 = _interopRequireDefault(_materialUiLibSvgIconsAvVideocam);
+
+var _reactTagsinput = require('react-tagsinput');
+
+var _reactTagsinput2 = _interopRequireDefault(_reactTagsinput);
+
+var _Clips = _react2['default'].createClass({
+    displayName: '_Clips',
+
+    toggleLeftNav: function toggleLeftNav() {
+        "use strict";
+        this.props.onToggle();
+        this.handleClose();
+    },
+    confirmDelete: function confirmDelete(e) {
+        this.setState({
+            'delete': true,
+            deleteItem: e.currentTarget.id
+        });
+    },
+    getInitialState: function getInitialState() {
+        return {
+            'delete': false,
+            deleteItem: null,
+            tags: [],
+            clips: this.props.clips
+        };
+    },
+    componentWillReceiveProps: function componentWillReceiveProps(nextProps) {
+        this.setState({
+            clips: nextProps.clips
+        });
+    },
+    formatTime: function formatTime(value) {
+        var startTime = value;
+
+        if (startTime) {
+            startTime = (value < 3600 ? '00:' : '') + (value < 60 ? '00:' : '') + _moment2['default'].duration(value, 'seconds').format('H:mm:ss', { forceLength: true });
+        }
+        return startTime;
+    },
+    handleClose: function handleClose() {
+        var clips = this.state.clips.map(function (clip) {
+            delete clip.hide;
+            return clip;
+        });
+        this.setState({
+            'delete': false,
+            deleteItem: null,
+            clips: clips,
+            tags: []
+        });
+    },
+    handleDelete: function handleDelete() {
+        this.props.onClipDelete(this.state.deleteItem);
+        this.handleClose();
+    },
+    _filterClips: function _filterClips(tags) {
+        this.setState({
+            tags: tags
+        });
+        var init = true;
+        if (tags.length === 0) {
+            init = false;
+        }
+        var clips = this.state.clips.map(function (clip) {
+            clip.hide = init;
+            return clip;
+        });
+        var _iteratorNormalCompletion = true;
+        var _didIteratorError = false;
+        var _iteratorError = undefined;
+
+        try {
+            var _loop = function () {
+                var tag = _step.value;
+
+                clips = clips.map(function (clip) {
+                    if (clip.tags.indexOf(tag) !== -1) {
+                        clip.hide = false;
+                    }
+                    return clip;
+                });
+            };
+
+            for (var _iterator = tags[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                _loop();
+            }
+        } catch (err) {
+            _didIteratorError = true;
+            _iteratorError = err;
+        } finally {
+            try {
+                if (!_iteratorNormalCompletion && _iterator['return']) {
+                    _iterator['return']();
+                }
+            } finally {
+                if (_didIteratorError) {
+                    throw _iteratorError;
+                }
+            }
+        }
+
+        this.setState({
+            clips: clips
+        });
+    },
+    render: function render() {
+        var _this = this;
+
+        var iconButtonElement = _react2['default'].createElement(
+            _materialUiLibIconButton2['default'],
+            {
+                touch: true,
+                tooltip: 'more',
+                tooltipPosition: 'bottom-left',
+                disabled: !this.props.edit
+            },
+            _react2['default'].createElement(_materialUiLibSvgIconsNavigationMoreVert2['default'], { color: _materialUiLibStylesColors2['default'].grey400 })
+        );
+
+        var actions = [_react2['default'].createElement(_materialUiLibFlatButton2['default'], {
+            label: 'Cancel',
+            secondary: true,
+            onTouchTap: this.handleClose
+        }), _react2['default'].createElement(_materialUiLibFlatButton2['default'], {
+            label: 'Ok',
+            primary: true,
+            keyboardFocused: true,
+            onTouchTap: this.handleDelete
+        })];
+
+        var clips = this.state.clips.map(function (clip, index) {
+            return !clip.hide ? _react2['default'].createElement(_materialUiLibListsListItem2['default'], {
+                key: clip.id,
+                id: index,
+                rightIconButton: _react2['default'].createElement(
+                    _materialUiLibMenusIconMenu2['default'],
+                    { iconButtonElement: iconButtonElement },
+                    _react2['default'].createElement(_materialUiLibMenusMenuItem2['default'], { id: index, primaryText: 'Play', leftIcon: _react2['default'].createElement(_materialUiLibSvgIconsAvPlayCircleFilled2['default'], null), onTouchTap: _this.props.onClipTap }),
+                    _react2['default'].createElement(_materialUiLibMenusMenuItem2['default'], { id: index, primaryText: 'Edit', leftIcon: _react2['default'].createElement(_materialUiLibSvgIconsEditorModeEdit2['default'], null), onTouchTap: _this.props.onClipEdit }),
+                    _react2['default'].createElement(_materialUiLibMenusMenuItem2['default'], { id: index, primaryText: 'Delete', leftIcon: _react2['default'].createElement(_materialUiLibSvgIconsContentRemove2['default'], null), onTouchTap: _this.confirmDelete })
+                ),
+                leftIcon: _react2['default'].createElement(_materialUiLibSvgIconsActionTheaters2['default'], { color: _materialUiLibStylesColors2['default'].darkBlack }),
+                onTouchTap: _this.props.onClipTap,
+                secondaryTextLines: 2,
+                primaryText: clip.name,
+                secondaryText: _react2['default'].createElement(
+                    'p',
+                    null,
+                    clip.startTime,
+                    ' / ',
+                    clip.endTime,
+                    _react2['default'].createElement('br', null),
+                    clip.tags.join()
+                )
+            }) : null;
+        });
+        return _react2['default'].createElement(
+            _materialUiLibLeftNav2['default'],
+            { width: 400, docked: false, openRight: true, open: this.props.open },
+            _react2['default'].createElement(_materialUiLibAppBar2['default'], { title: 'Clips', onLeftIconButtonTouchTap: this.toggleLeftNav }),
+            _react2['default'].createElement(
+                _materialUiLibListsList2['default'],
+                { subheader: 'Search by tag...' },
+                _react2['default'].createElement(
+                    _materialUiLibListsListItem2['default'],
+                    null,
+                    _react2['default'].createElement(_reactTagsinput2['default'], { value: this.state.tags, onChange: this._filterClips })
+                )
+            ),
+            _react2['default'].createElement(_materialUiLibDivider2['default'], null),
+            _react2['default'].createElement(
+                _materialUiLibListsList2['default'],
+                { subheader: 'Full Video' },
+                _react2['default'].createElement(_materialUiLibListsListItem2['default'], {
+                    leftIcon: _react2['default'].createElement(_materialUiLibSvgIconsAvVideocam2['default'], { color: _materialUiLibStylesColors2['default'].darkBlack }),
+                    onTouchTap: this.props.onFullTap,
+                    secondaryTextLines: 1,
+                    primaryText: this.props.fullTitle,
+                    secondaryText: _react2['default'].createElement(
+                        'p',
+                        null,
+                        this.formatTime(this.props.fullDuration)
+                    )
+                })
+            ),
+            _react2['default'].createElement(_materialUiLibDivider2['default'], null),
+            _react2['default'].createElement(
+                _materialUiLibListsList2['default'],
+                { subheader: 'Clips' },
+                clips
+            ),
+            _react2['default'].createElement(_materialUiLibDialog2['default'], {
+                title: 'Are you sure?',
+                actions: actions,
+                modal: false,
+                open: this.state['delete'],
+                onRequestClose: this.handleClose
+            })
+        );
+    }
+});
+
+exports['default'] = _Clips;
+module.exports = exports['default'];
+
+},{"material-ui/lib/app-bar":undefined,"material-ui/lib/dialog":undefined,"material-ui/lib/divider":undefined,"material-ui/lib/flat-button":undefined,"material-ui/lib/icon-button":undefined,"material-ui/lib/left-nav":68,"material-ui/lib/lists/list":undefined,"material-ui/lib/lists/list-item":undefined,"material-ui/lib/menus/icon-menu":undefined,"material-ui/lib/menus/menu-item":undefined,"material-ui/lib/styles/colors":undefined,"material-ui/lib/svg-icons/action/theaters":undefined,"material-ui/lib/svg-icons/av/play-circle-filled":undefined,"material-ui/lib/svg-icons/av/videocam":undefined,"material-ui/lib/svg-icons/content/remove":undefined,"material-ui/lib/svg-icons/editor/mode-edit":undefined,"material-ui/lib/svg-icons/navigation/more-vert":undefined,"moment":109,"react":undefined,"react-tagsinput":undefined}],259:[function(require,module,exports){
+/**
+ * Created by zerocooljs on 2/21/16.
+ */
+'use strict';
+Object.defineProperty(exports, '__esModule', {
+    value: true
+});
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _materialUiLibDialog = require('material-ui/lib/dialog');
+
+var _materialUiLibDialog2 = _interopRequireDefault(_materialUiLibDialog);
+
+var _materialUiLibFlatButton = require('material-ui/lib/flat-button');
+
+var _materialUiLibFlatButton2 = _interopRequireDefault(_materialUiLibFlatButton);
+
+var _materialUiLibTextField = require('material-ui/lib/text-field');
+
+var _materialUiLibTextField2 = _interopRequireDefault(_materialUiLibTextField);
+
+var _inputmaskCore = require('inputmask-core');
+
+var _inputmaskCore2 = _interopRequireDefault(_inputmaskCore);
+
+var _moment = require('moment');
+
+var _moment2 = _interopRequireDefault(_moment);
+
+var _reactTagsinput = require('react-tagsinput');
+
+var _reactTagsinput2 = _interopRequireDefault(_reactTagsinput);
+
+require('moment-duration-format');
+
+var _NewClip = _react2['default'].createClass({
+    displayName: '_NewClip',
+
+    getStartTime: function getStartTime(value) {
+        var startTime = value;
+
+        if (startTime) {
+            startTime = (value < 3600 ? '00:' : '') + (value < 60 ? '00:' : '') + _moment2['default'].duration(value, 'seconds').format('H:mm:ss', { forceLength: true });
+        }
+        return startTime;
+    },
+    getInitialState: function getInitialState() {
+        var clip = this.props.clip;
+        if (!clip) {
+            var startTime = this.getStartTime(this.props.startTime);
+            return {
+                startTime: startTime,
+                endTime: null,
+                name: null,
+                errorStart: null,
+                errorEnd: null,
+                errorName: null,
+                canSave: false,
+                id: null,
+                tags: []
+            };
+        }
+        return {
+            startTime: clip.startTime,
+            endTime: clip.endTime,
+            name: clip.name,
+            errorStart: null,
+            errorEnd: null,
+            errorName: null,
+            canSave: false,
+            id: clip.id,
+            tags: clip.tags
+        };
+    },
+    saveClip: function saveClip() {
+        this.props.onOk({
+            id: this.state.id,
+            name: this.state.name,
+            startTime: this.state.startTime,
+            endTime: this.state.endTime,
+            tags: this.state.tags
+        });
+        this._resetState();
+    },
+    componentWillReceiveProps: function componentWillReceiveProps(nextProps) {
+        var startTime = this.getStartTime(nextProps.startTime);
+        var clip = nextProps.clip;
+        if (clip) {
+            return this.setState({
+                startTime: clip.startTime,
+                endTime: clip.endTime,
+                name: clip.name,
+                id: clip.id,
+                tags: clip.tags,
+                canSave: true
+            });
+        }
+        this.setState({
+            startTime: startTime
+        });
+    },
+    _handleChange: function _handleChange(e) {
+        if (e.target.id === 'startTime' || e.target.id === 'endTime') {
+            var mask = new _inputmaskCore2['default']({ pattern: '11:11:11' });
+            if (!mask.paste(e.target.value)) {
+                e.target.value = this.state[e.target.id];
+            }
+        }
+        var startTime = e.target.id === 'startTime' ? e.target.value : this.state.startTime;
+        var endTime = e.target.id === 'endTime' ? e.target.value : this.state.endTime;
+        var name = e.target.id === 'name' ? e.target.value : this.state.name;
+        this.setState({
+            startTime: startTime,
+            endTime: endTime,
+            name: name
+        }, this._validate);
+    },
+    _validate: function _validate() {
+        var name = this._validateName();
+        var start = this._validateStart();
+        var end = this._validateEnd();
+        var dates = this._validateDates(start && end);
+        this.setState({
+            canSave: name && start && end && dates
+        });
+        return name && start && end && dates;
+    },
+    _validateName: function _validateName() {
+        var errorName = null;
+        if (!this.state.name) {
+            errorName = "Name can't be empty.";
+        }
+        this.setState({
+            errorName: errorName
+        });
+        return !errorName;
+    },
+    _validateStart: function _validateStart() {
+        var errorStart = null;
+        if (!this.state.startTime) {
+            errorStart = "Start Time  can't be empty.";
+        }
+        if (!errorStart) {
+            if (!/([0-9][0-9])(:[0-5][0-9])(:[0-5][0-9])$/.test(this.state.startTime)) {
+                errorStart = 'Start Time must be on HH:mm:ss format.';
+            }
+        }
+        if (!errorStart) {
+            var time = (0, _moment2['default'])(this.state.startTime, 'HH:mm:ss');
+            var total = time.second() + time.minute() * 60 + time.hour() * 3600;
+            var duration = (this.props.duration < 3600 ? '00:' : '') + (this.props.duration < 60 ? '00:' : '') + _moment2['default'].duration(this.props.duration, 'seconds').format('H:mm:ss', { forceLength: true });
+            if (total >= this.props.duration) {
+                errorStart = 'Start Time must be lower than the Video length ' + duration + '.';
+            }
+        }
+        this.setState({
+            errorStart: errorStart
+        });
+        return !errorStart;
+    },
+    _validateEnd: function _validateEnd() {
+        var errorEnd = null;
+        if (!this.state.endTime) {
+            errorEnd = "End Time can't be empty.";
+        }
+        if (!errorEnd) {
+            if (!/([0-9][0-9])(:[0-5][0-9])(:[0-5][0-9])$/.test(this.state.endTime)) {
+                errorEnd = 'End Time must be on HH:mm:ss format.';
+            }
+        }
+        if (!errorEnd) {
+            var time = (0, _moment2['default'])(this.state.endTime, 'HH:mm:ss');
+            var total = time.second() + time.minute() * 60 + time.hour() * 3600;
+            var duration = (this.props.duration < 3600 ? '00:' : '') + (this.props.duration < 60 ? '00:' : '') + _moment2['default'].duration(this.props.duration, 'seconds').format('H:mm:ss', { forceLength: true });
+            if (total > this.props.duration) {
+                errorEnd = 'End Time van\'t be greater than the Video length ' + duration + '.';
+            }
+        }
+        this.setState({
+            errorEnd: errorEnd
+        });
+        return !errorEnd;
+    },
+    _validateDates: function _validateDates(exec) {
+        var errorStart = null;
+        var errorEnd = null;
+
+        if (!exec) {
+            return false;
+        }
+
+        var startTime = (0, _moment2['default'])(this.state.startTime, 'HH:mm:ss');
+        var startTotal = startTime.second() + startTime.minute() * 60 + startTime.hour() * 3600;
+        var endTime = (0, _moment2['default'])(this.state.endTime, 'HH:mm:ss');
+        var endTotal = endTime.second() + endTime.minute() * 60 + endTime.hour() * 3600;
+        if (startTotal > endTotal) {
+            errorStart = 'Start Time must be lower than End Time ' + this.state.endTime + '.';
+            errorEnd = 'End Time must be greater than Start Time ' + this.state.startTime + '.';
+        }
+        this.setState({
+            errorEnd: errorEnd,
+            errorStart: errorStart
+        });
+        return !errorEnd || !errorStart;
+    },
+
+    _cancel: function _cancel() {
+        this._resetState();
+        this.props.onClose();
+    },
+
+    _resetState: function _resetState() {
+        this.setState({
+            startTime: null,
+            endTime: null,
+            name: null,
+            errorStart: null,
+            errorEnd: null,
+            errorName: null,
+            canSave: false,
+            id: null,
+            tags: []
+        });
+    },
+    _handleTags: function _handleTags(tags) {
+        this.setState({
+            tags: tags
+        });
+    },
+    render: function render() {
+        var actions = [_react2['default'].createElement(_materialUiLibFlatButton2['default'], {
+            label: 'Cancel',
+            secondary: true,
+            onTouchTap: this._cancel
+        }), _react2['default'].createElement(_materialUiLibFlatButton2['default'], {
+            label: this.state.id ? 'Modify' : 'Add',
+            primary: true,
+            keyboardFocused: true,
+            onTouchTap: this.saveClip,
+            disabled: !this.state.canSave
+        })];
+        var floatStyle = {
+            top: 25
+        };
+        return _react2['default'].createElement(
+            _materialUiLibDialog2['default'],
+            {
+                title: 'New Clip',
+                actions: actions,
+                open: this.props.open,
+                modal: true
+            },
+            _react2['default'].createElement(
+                'div',
+                null,
+                _react2['default'].createElement(_materialUiLibTextField2['default'], {
+                    id: 'name',
+                    hintText: 'Summer Vacations',
+                    errorText: this.state.errorName,
+                    floatingLabelText: 'Name',
+                    floatingLabelStyle: floatStyle,
+                    value: this.state.name,
+                    onChange: this._handleChange,
+                    fullWidth: true
+                }),
+                _react2['default'].createElement('br', null),
+                _react2['default'].createElement(_materialUiLibTextField2['default'], {
+                    id: 'startTime',
+                    hintText: '00:00:00',
+                    errorText: this.state.errorStart,
+                    floatingLabelText: 'Start time',
+                    floatingLabelStyle: floatStyle,
+                    value: this.state.startTime,
+                    onChange: this._handleChange
+                }),
+                _react2['default'].createElement('br', null),
+                _react2['default'].createElement(_materialUiLibTextField2['default'], {
+                    id: 'endTime',
+                    hintText: '00:00:00',
+                    errorText: this.state.errorEnd,
+                    floatingLabelText: 'End time',
+                    floatingLabelStyle: floatStyle,
+                    value: this.state.endTime,
+                    onChange: this._handleChange
+                }),
+                _react2['default'].createElement('br', null),
+                _react2['default'].createElement('br', null),
+                _react2['default'].createElement(
+                    'label',
+                    { 'class': 'mdl-textfield__label', 'for': 'tagsInput' },
+                    'Tags...'
+                ),
+                _react2['default'].createElement(_reactTagsinput2['default'], { id: 'tagsInput', value: this.state.tags, onChange: this._handleTags })
+            )
+        );
+    }
+});
+
+exports['default'] = _NewClip;
+module.exports = exports['default'];
+
+},{"inputmask-core":undefined,"material-ui/lib/dialog":undefined,"material-ui/lib/flat-button":undefined,"material-ui/lib/text-field":undefined,"moment":109,"moment-duration-format":108,"react":undefined,"react-tagsinput":undefined}],260:[function(require,module,exports){
+/**
+ * Created by zerocooljs on 2/20/16.
+ */
+'use strict';
+Object.defineProperty(exports, '__esModule', {
+    value: true
+});
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _materialUiLibCardCard = require('material-ui/lib/card/card');
+
+var _materialUiLibCardCard2 = _interopRequireDefault(_materialUiLibCardCard);
+
+var _materialUiLibCardCardMedia = require('material-ui/lib/card/card-media');
+
+var _materialUiLibCardCardMedia2 = _interopRequireDefault(_materialUiLibCardCardMedia);
+
+var _materialUiLibLinearProgress = require('material-ui/lib/linear-progress');
+
+var _materialUiLibLinearProgress2 = _interopRequireDefault(_materialUiLibLinearProgress);
+
+var _materialUiLibStylesColors = require('material-ui/lib/styles/colors');
+
+var _materialUiLibStylesColors2 = _interopRequireDefault(_materialUiLibStylesColors);
+
+var _Video = _react2['default'].createClass({
+    displayName: '_Video',
+
+    componentDidUpdate: function componentDidUpdate() {
+        this.pauseVideo();
+        this.loadVideo();
+    },
+    getInitialState: function getInitialState() {
+        return {
+            loaded: false
+        };
+    },
+    componentWillReceiveProps: function componentWillReceiveProps(nextProps) {
+        if (nextProps.forceLoaded && nextProps.forceLoaded === true) {
+            this.setState({
+                loaded: nextProps.forceLoaded
+            });
+        }
+    },
+    pauseVideo: function pauseVideo() {
+        if (this.props.paused && !this._video.paused) {
+            return this._video.pause();
+        }
+    },
+    loadVideo: function loadVideo() {
+        if (this.props.loadVideo) {
+            this._video.load();
+        }
+    },
+    startLoaded: function startLoaded() {
+        this.setState({
+            loaded: true
+        });
+    },
+    endLoaded: function endLoaded() {
+        this.setState({
+            loaded: false
+        });
+    },
+    _trackLoad: function _trackLoad() {
+        var cues = track.track.cues,
+            cue,
+            df = document.createDocumentFragment(),
+            totalWidth = markers.offsetWidth,
+            duration = cues[cues.length - 1].endTime;
+        for (var i = 0; cue = cues[i]; i++) {
+            df.appendChild(createMarker(cue, Math.floor(cue.endTime - cue.startTime) / duration * totalWidth - 1));
+        }
+        markers.appendChild(df);
+    },
+    render: function render() {
+        var _this = this;
+
+        return _react2['default'].createElement(
+            _materialUiLibCardCard2['default'],
+            null,
+            _react2['default'].createElement(
+                _materialUiLibCardCardMedia2['default'],
+                null,
+                _react2['default'].createElement(
+                    'div',
+                    null,
+                    this.state.loaded ? _react2['default'].createElement(_materialUiLibLinearProgress2['default'], { mode: 'indeterminate', color: _materialUiLibStylesColors2['default'].pinkA700, style: { height: 7 } }) : null,
+                    _react2['default'].createElement(
+                        'video',
+                        {
+                            width: '100%',
+                            onTimeUpdate: this.props.onTimeupdate,
+                            ref: function (c) {
+                                _this._video = c;
+                            },
+                            onLoadedMetadata: this.props.onLoadMetaData,
+                            src: this.props.videoUrl,
+                            onLoadStart: this.startLoaded,
+                            onCanPlay: this.endLoaded,
+                            onError: this.endLoaded,
+                            onCanPlay: this.endLoaded,
+                            onSuspend: this.endLoaded,
+                            onPause: this.props.onPause,
+                            controls: true,
+                            autoPlay: true
+                        },
+                        _react2['default'].createElement('track', { src: 'chapters.vtt', kind: 'chapters', 'default': true, onloadeddata: this._trackLoad })
+                    )
+                )
+            )
+        );
+    }
+});
+
+exports['default'] = _Video;
+module.exports = exports['default'];
+
+},{"material-ui/lib/card/card":undefined,"material-ui/lib/card/card-media":undefined,"material-ui/lib/linear-progress":undefined,"material-ui/lib/styles/colors":undefined,"react":undefined}],"zjs-react-video":[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -34586,7 +35308,7 @@ Object.defineProperty(exports, '__esModule', {
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-var _react = (typeof window !== "undefined" ? window['React'] : typeof global !== "undefined" ? global['React'] : null);
+var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -34896,735 +35618,4 @@ var ZjsReactVideo = _react2['default'].createClass({
 exports['default'] = ZjsReactVideo;
 module.exports = exports['default'];
 
-}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./_Clips":259,"./_NewClip":260,"./_Video":261,"material-ui/lib/app-bar":undefined,"material-ui/lib/badge":undefined,"material-ui/lib/floating-action-button":undefined,"material-ui/lib/icon-button":undefined,"material-ui/lib/svg-icons/av/subscriptions":94,"material-ui/lib/svg-icons/content/add":undefined,"moment":109,"react-hotkeys":undefined,"react-localstorage":undefined,"react-tap-event-plugin":undefined,"shortid":247,"underscore":256}],259:[function(require,module,exports){
-(function (global){
-/**
- * Created by zerocooljs on 2/20/16.
- */
-'use strict';
-Object.defineProperty(exports, '__esModule', {
-    value: true
-});
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-var _react = (typeof window !== "undefined" ? window['React'] : typeof global !== "undefined" ? global['React'] : null);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _materialUiLibLeftNav = require('material-ui/lib/left-nav');
-
-var _materialUiLibLeftNav2 = _interopRequireDefault(_materialUiLibLeftNav);
-
-var _materialUiLibAppBar = require('material-ui/lib/app-bar');
-
-var _materialUiLibAppBar2 = _interopRequireDefault(_materialUiLibAppBar);
-
-var _materialUiLibListsList = require('material-ui/lib/lists/list');
-
-var _materialUiLibListsList2 = _interopRequireDefault(_materialUiLibListsList);
-
-var _materialUiLibListsListItem = require('material-ui/lib/lists/list-item');
-
-var _materialUiLibListsListItem2 = _interopRequireDefault(_materialUiLibListsListItem);
-
-var _materialUiLibDivider = require('material-ui/lib/divider');
-
-var _materialUiLibDivider2 = _interopRequireDefault(_materialUiLibDivider);
-
-var _materialUiLibStylesColors = require('material-ui/lib/styles/colors');
-
-var _materialUiLibStylesColors2 = _interopRequireDefault(_materialUiLibStylesColors);
-
-var _materialUiLibIconButton = require('material-ui/lib/icon-button');
-
-var _materialUiLibIconButton2 = _interopRequireDefault(_materialUiLibIconButton);
-
-var _materialUiLibSvgIconsActionTheaters = require('material-ui/lib/svg-icons/action/theaters');
-
-var _materialUiLibSvgIconsActionTheaters2 = _interopRequireDefault(_materialUiLibSvgIconsActionTheaters);
-
-var _materialUiLibSvgIconsNavigationMoreVert = require('material-ui/lib/svg-icons/navigation/more-vert');
-
-var _materialUiLibSvgIconsNavigationMoreVert2 = _interopRequireDefault(_materialUiLibSvgIconsNavigationMoreVert);
-
-var _materialUiLibMenusIconMenu = require('material-ui/lib/menus/icon-menu');
-
-var _materialUiLibMenusIconMenu2 = _interopRequireDefault(_materialUiLibMenusIconMenu);
-
-var _materialUiLibMenusMenuItem = require('material-ui/lib/menus/menu-item');
-
-var _materialUiLibMenusMenuItem2 = _interopRequireDefault(_materialUiLibMenusMenuItem);
-
-var _materialUiLibSvgIconsAvPlayCircleFilled = require('material-ui/lib/svg-icons/av/play-circle-filled');
-
-var _materialUiLibSvgIconsAvPlayCircleFilled2 = _interopRequireDefault(_materialUiLibSvgIconsAvPlayCircleFilled);
-
-var _materialUiLibSvgIconsEditorModeEdit = require('material-ui/lib/svg-icons/editor/mode-edit');
-
-var _materialUiLibSvgIconsEditorModeEdit2 = _interopRequireDefault(_materialUiLibSvgIconsEditorModeEdit);
-
-var _materialUiLibSvgIconsContentRemove = require('material-ui/lib/svg-icons/content/remove');
-
-var _materialUiLibSvgIconsContentRemove2 = _interopRequireDefault(_materialUiLibSvgIconsContentRemove);
-
-var _materialUiLibDialog = require('material-ui/lib/dialog');
-
-var _materialUiLibDialog2 = _interopRequireDefault(_materialUiLibDialog);
-
-var _materialUiLibFlatButton = require('material-ui/lib/flat-button');
-
-var _materialUiLibFlatButton2 = _interopRequireDefault(_materialUiLibFlatButton);
-
-var _moment = require('moment');
-
-var _moment2 = _interopRequireDefault(_moment);
-
-var _materialUiLibSvgIconsAvVideocam = require('material-ui/lib/svg-icons/av/videocam');
-
-var _materialUiLibSvgIconsAvVideocam2 = _interopRequireDefault(_materialUiLibSvgIconsAvVideocam);
-
-var _reactTagsinput = require('react-tagsinput');
-
-var _reactTagsinput2 = _interopRequireDefault(_reactTagsinput);
-
-var _Clips = _react2['default'].createClass({
-    displayName: '_Clips',
-
-    toggleLeftNav: function toggleLeftNav() {
-        "use strict";
-        this.props.onToggle();
-        this.handleClose();
-    },
-    confirmDelete: function confirmDelete(e) {
-        this.setState({
-            'delete': true,
-            deleteItem: e.currentTarget.id
-        });
-    },
-    getInitialState: function getInitialState() {
-        return {
-            'delete': false,
-            deleteItem: null,
-            tags: [],
-            clips: this.props.clips
-        };
-    },
-    componentWillReceiveProps: function componentWillReceiveProps(nextProps) {
-        this.setState({
-            clips: nextProps.clips
-        });
-    },
-    formatTime: function formatTime(value) {
-        var startTime = value;
-
-        if (startTime) {
-            startTime = (value < 3600 ? '00:' : '') + (value < 60 ? '00:' : '') + _moment2['default'].duration(value, 'seconds').format('H:mm:ss', { forceLength: true });
-        }
-        return startTime;
-    },
-    handleClose: function handleClose() {
-        var clips = this.state.clips.map(function (clip) {
-            delete clip.hide;
-            return clip;
-        });
-        this.setState({
-            'delete': false,
-            deleteItem: null,
-            clips: clips,
-            tags: []
-        });
-    },
-    handleDelete: function handleDelete() {
-        this.props.onClipDelete(this.state.deleteItem);
-        this.handleClose();
-    },
-    _filterClips: function _filterClips(tags) {
-        this.setState({
-            tags: tags
-        });
-        var init = true;
-        if (tags.length === 0) {
-            init = false;
-        }
-        var clips = this.state.clips.map(function (clip) {
-            clip.hide = init;
-            return clip;
-        });
-        var _iteratorNormalCompletion = true;
-        var _didIteratorError = false;
-        var _iteratorError = undefined;
-
-        try {
-            var _loop = function () {
-                var tag = _step.value;
-
-                clips = clips.map(function (clip) {
-                    if (clip.tags.indexOf(tag) !== -1) {
-                        clip.hide = false;
-                    }
-                    return clip;
-                });
-            };
-
-            for (var _iterator = tags[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-                _loop();
-            }
-        } catch (err) {
-            _didIteratorError = true;
-            _iteratorError = err;
-        } finally {
-            try {
-                if (!_iteratorNormalCompletion && _iterator['return']) {
-                    _iterator['return']();
-                }
-            } finally {
-                if (_didIteratorError) {
-                    throw _iteratorError;
-                }
-            }
-        }
-
-        this.setState({
-            clips: clips
-        });
-    },
-    render: function render() {
-        var _this = this;
-
-        var iconButtonElement = _react2['default'].createElement(
-            _materialUiLibIconButton2['default'],
-            {
-                touch: true,
-                tooltip: 'more',
-                tooltipPosition: 'bottom-left',
-                disabled: !this.props.edit
-            },
-            _react2['default'].createElement(_materialUiLibSvgIconsNavigationMoreVert2['default'], { color: _materialUiLibStylesColors2['default'].grey400 })
-        );
-
-        var actions = [_react2['default'].createElement(_materialUiLibFlatButton2['default'], {
-            label: 'Cancel',
-            secondary: true,
-            onTouchTap: this.handleClose
-        }), _react2['default'].createElement(_materialUiLibFlatButton2['default'], {
-            label: 'Ok',
-            primary: true,
-            keyboardFocused: true,
-            onTouchTap: this.handleDelete
-        })];
-
-        var clips = this.state.clips.map(function (clip, index) {
-            return !clip.hide ? _react2['default'].createElement(_materialUiLibListsListItem2['default'], {
-                key: clip.id,
-                id: index,
-                rightIconButton: _react2['default'].createElement(
-                    _materialUiLibMenusIconMenu2['default'],
-                    { iconButtonElement: iconButtonElement },
-                    _react2['default'].createElement(_materialUiLibMenusMenuItem2['default'], { id: index, primaryText: 'Play', leftIcon: _react2['default'].createElement(_materialUiLibSvgIconsAvPlayCircleFilled2['default'], null), onTouchTap: _this.props.onClipTap }),
-                    _react2['default'].createElement(_materialUiLibMenusMenuItem2['default'], { id: index, primaryText: 'Edit', leftIcon: _react2['default'].createElement(_materialUiLibSvgIconsEditorModeEdit2['default'], null), onTouchTap: _this.props.onClipEdit }),
-                    _react2['default'].createElement(_materialUiLibMenusMenuItem2['default'], { id: index, primaryText: 'Delete', leftIcon: _react2['default'].createElement(_materialUiLibSvgIconsContentRemove2['default'], null), onTouchTap: _this.confirmDelete })
-                ),
-                leftIcon: _react2['default'].createElement(_materialUiLibSvgIconsActionTheaters2['default'], { color: _materialUiLibStylesColors2['default'].darkBlack }),
-                onTouchTap: _this.props.onClipTap,
-                secondaryTextLines: 2,
-                primaryText: clip.name,
-                secondaryText: _react2['default'].createElement(
-                    'p',
-                    null,
-                    clip.startTime,
-                    ' / ',
-                    clip.endTime,
-                    _react2['default'].createElement('br', null),
-                    clip.tags.join()
-                )
-            }) : null;
-        });
-        return _react2['default'].createElement(
-            _materialUiLibLeftNav2['default'],
-            { width: 400, docked: false, openRight: true, open: this.props.open },
-            _react2['default'].createElement(_materialUiLibAppBar2['default'], { title: 'Clips', onLeftIconButtonTouchTap: this.toggleLeftNav }),
-            _react2['default'].createElement(
-                _materialUiLibListsList2['default'],
-                { subheader: 'Search by tag...' },
-                _react2['default'].createElement(
-                    _materialUiLibListsListItem2['default'],
-                    null,
-                    _react2['default'].createElement(_reactTagsinput2['default'], { value: this.state.tags, onChange: this._filterClips })
-                )
-            ),
-            _react2['default'].createElement(_materialUiLibDivider2['default'], null),
-            _react2['default'].createElement(
-                _materialUiLibListsList2['default'],
-                { subheader: 'Full Video' },
-                _react2['default'].createElement(_materialUiLibListsListItem2['default'], {
-                    leftIcon: _react2['default'].createElement(_materialUiLibSvgIconsAvVideocam2['default'], { color: _materialUiLibStylesColors2['default'].darkBlack }),
-                    onTouchTap: this.props.onFullTap,
-                    secondaryTextLines: 1,
-                    primaryText: this.props.fullTitle,
-                    secondaryText: _react2['default'].createElement(
-                        'p',
-                        null,
-                        this.formatTime(this.props.fullDuration)
-                    )
-                })
-            ),
-            _react2['default'].createElement(_materialUiLibDivider2['default'], null),
-            _react2['default'].createElement(
-                _materialUiLibListsList2['default'],
-                { subheader: 'Clips' },
-                clips
-            ),
-            _react2['default'].createElement(_materialUiLibDialog2['default'], {
-                title: 'Are you sure?',
-                actions: actions,
-                modal: false,
-                open: this.state['delete'],
-                onRequestClose: this.handleClose
-            })
-        );
-    }
-});
-
-exports['default'] = _Clips;
-module.exports = exports['default'];
-
-}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"material-ui/lib/app-bar":undefined,"material-ui/lib/dialog":undefined,"material-ui/lib/divider":undefined,"material-ui/lib/flat-button":undefined,"material-ui/lib/icon-button":undefined,"material-ui/lib/left-nav":68,"material-ui/lib/lists/list":undefined,"material-ui/lib/lists/list-item":undefined,"material-ui/lib/menus/icon-menu":undefined,"material-ui/lib/menus/menu-item":undefined,"material-ui/lib/styles/colors":undefined,"material-ui/lib/svg-icons/action/theaters":undefined,"material-ui/lib/svg-icons/av/play-circle-filled":undefined,"material-ui/lib/svg-icons/av/videocam":undefined,"material-ui/lib/svg-icons/content/remove":undefined,"material-ui/lib/svg-icons/editor/mode-edit":undefined,"material-ui/lib/svg-icons/navigation/more-vert":undefined,"moment":109,"react-tagsinput":undefined}],260:[function(require,module,exports){
-(function (global){
-/**
- * Created by zerocooljs on 2/21/16.
- */
-'use strict';
-Object.defineProperty(exports, '__esModule', {
-    value: true
-});
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-var _react = (typeof window !== "undefined" ? window['React'] : typeof global !== "undefined" ? global['React'] : null);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _materialUiLibDialog = require('material-ui/lib/dialog');
-
-var _materialUiLibDialog2 = _interopRequireDefault(_materialUiLibDialog);
-
-var _materialUiLibFlatButton = require('material-ui/lib/flat-button');
-
-var _materialUiLibFlatButton2 = _interopRequireDefault(_materialUiLibFlatButton);
-
-var _materialUiLibTextField = require('material-ui/lib/text-field');
-
-var _materialUiLibTextField2 = _interopRequireDefault(_materialUiLibTextField);
-
-var _inputmaskCore = require('inputmask-core');
-
-var _inputmaskCore2 = _interopRequireDefault(_inputmaskCore);
-
-var _moment = require('moment');
-
-var _moment2 = _interopRequireDefault(_moment);
-
-var _reactTagsinput = require('react-tagsinput');
-
-var _reactTagsinput2 = _interopRequireDefault(_reactTagsinput);
-
-require('moment-duration-format');
-
-var _NewClip = _react2['default'].createClass({
-    displayName: '_NewClip',
-
-    getStartTime: function getStartTime(value) {
-        var startTime = value;
-
-        if (startTime) {
-            startTime = (value < 3600 ? '00:' : '') + (value < 60 ? '00:' : '') + _moment2['default'].duration(value, 'seconds').format('H:mm:ss', { forceLength: true });
-        }
-        return startTime;
-    },
-    getInitialState: function getInitialState() {
-        var clip = this.props.clip;
-        if (!clip) {
-            var startTime = this.getStartTime(this.props.startTime);
-            return {
-                startTime: startTime,
-                endTime: null,
-                name: null,
-                errorStart: null,
-                errorEnd: null,
-                errorName: null,
-                canSave: false,
-                id: null,
-                tags: []
-            };
-        }
-        return {
-            startTime: clip.startTime,
-            endTime: clip.endTime,
-            name: clip.name,
-            errorStart: null,
-            errorEnd: null,
-            errorName: null,
-            canSave: false,
-            id: clip.id,
-            tags: clip.tags
-        };
-    },
-    saveClip: function saveClip() {
-        this.props.onOk({
-            id: this.state.id,
-            name: this.state.name,
-            startTime: this.state.startTime,
-            endTime: this.state.endTime,
-            tags: this.state.tags
-        });
-        this._resetState();
-    },
-    componentWillReceiveProps: function componentWillReceiveProps(nextProps) {
-        var startTime = this.getStartTime(nextProps.startTime);
-        var clip = nextProps.clip;
-        if (clip) {
-            return this.setState({
-                startTime: clip.startTime,
-                endTime: clip.endTime,
-                name: clip.name,
-                id: clip.id,
-                tags: clip.tags,
-                canSave: true
-            });
-        }
-        this.setState({
-            startTime: startTime
-        });
-    },
-    _handleChange: function _handleChange(e) {
-        if (e.target.id === 'startTime' || e.target.id === 'endTime') {
-            var mask = new _inputmaskCore2['default']({ pattern: '11:11:11' });
-            if (!mask.paste(e.target.value)) {
-                e.target.value = this.state[e.target.id];
-            }
-        }
-        var startTime = e.target.id === 'startTime' ? e.target.value : this.state.startTime;
-        var endTime = e.target.id === 'endTime' ? e.target.value : this.state.endTime;
-        var name = e.target.id === 'name' ? e.target.value : this.state.name;
-        this.setState({
-            startTime: startTime,
-            endTime: endTime,
-            name: name
-        }, this._validate);
-    },
-    _validate: function _validate() {
-        var name = this._validateName();
-        var start = this._validateStart();
-        var end = this._validateEnd();
-        var dates = this._validateDates(start && end);
-        this.setState({
-            canSave: name && start && end && dates
-        });
-        return name && start && end && dates;
-    },
-    _validateName: function _validateName() {
-        var errorName = null;
-        if (!this.state.name) {
-            errorName = "Name can't be empty.";
-        }
-        this.setState({
-            errorName: errorName
-        });
-        return !errorName;
-    },
-    _validateStart: function _validateStart() {
-        var errorStart = null;
-        if (!this.state.startTime) {
-            errorStart = "Start Time  can't be empty.";
-        }
-        if (!errorStart) {
-            if (!/([0-9][0-9])(:[0-5][0-9])(:[0-5][0-9])$/.test(this.state.startTime)) {
-                errorStart = 'Start Time must be on HH:mm:ss format.';
-            }
-        }
-        if (!errorStart) {
-            var time = (0, _moment2['default'])(this.state.startTime, 'HH:mm:ss');
-            var total = time.second() + time.minute() * 60 + time.hour() * 3600;
-            var duration = (this.props.duration < 3600 ? '00:' : '') + (this.props.duration < 60 ? '00:' : '') + _moment2['default'].duration(this.props.duration, 'seconds').format('H:mm:ss', { forceLength: true });
-            if (total >= this.props.duration) {
-                errorStart = 'Start Time must be lower than the Video length ' + duration + '.';
-            }
-        }
-        this.setState({
-            errorStart: errorStart
-        });
-        return !errorStart;
-    },
-    _validateEnd: function _validateEnd() {
-        var errorEnd = null;
-        if (!this.state.endTime) {
-            errorEnd = "End Time can't be empty.";
-        }
-        if (!errorEnd) {
-            if (!/([0-9][0-9])(:[0-5][0-9])(:[0-5][0-9])$/.test(this.state.endTime)) {
-                errorEnd = 'End Time must be on HH:mm:ss format.';
-            }
-        }
-        if (!errorEnd) {
-            var time = (0, _moment2['default'])(this.state.endTime, 'HH:mm:ss');
-            var total = time.second() + time.minute() * 60 + time.hour() * 3600;
-            var duration = (this.props.duration < 3600 ? '00:' : '') + (this.props.duration < 60 ? '00:' : '') + _moment2['default'].duration(this.props.duration, 'seconds').format('H:mm:ss', { forceLength: true });
-            if (total > this.props.duration) {
-                errorEnd = 'End Time van\'t be greater than the Video length ' + duration + '.';
-            }
-        }
-        this.setState({
-            errorEnd: errorEnd
-        });
-        return !errorEnd;
-    },
-    _validateDates: function _validateDates(exec) {
-        var errorStart = null;
-        var errorEnd = null;
-
-        if (!exec) {
-            return false;
-        }
-
-        var startTime = (0, _moment2['default'])(this.state.startTime, 'HH:mm:ss');
-        var startTotal = startTime.second() + startTime.minute() * 60 + startTime.hour() * 3600;
-        var endTime = (0, _moment2['default'])(this.state.endTime, 'HH:mm:ss');
-        var endTotal = endTime.second() + endTime.minute() * 60 + endTime.hour() * 3600;
-        if (startTotal > endTotal) {
-            errorStart = 'Start Time must be lower than End Time ' + this.state.endTime + '.';
-            errorEnd = 'End Time must be greater than Start Time ' + this.state.startTime + '.';
-        }
-        this.setState({
-            errorEnd: errorEnd,
-            errorStart: errorStart
-        });
-        return !errorEnd || !errorStart;
-    },
-
-    _cancel: function _cancel() {
-        this._resetState();
-        this.props.onClose();
-    },
-
-    _resetState: function _resetState() {
-        this.setState({
-            startTime: null,
-            endTime: null,
-            name: null,
-            errorStart: null,
-            errorEnd: null,
-            errorName: null,
-            canSave: false,
-            id: null,
-            tags: []
-        });
-    },
-    _handleTags: function _handleTags(tags) {
-        this.setState({
-            tags: tags
-        });
-    },
-    render: function render() {
-        var actions = [_react2['default'].createElement(_materialUiLibFlatButton2['default'], {
-            label: 'Cancel',
-            secondary: true,
-            onTouchTap: this._cancel
-        }), _react2['default'].createElement(_materialUiLibFlatButton2['default'], {
-            label: this.state.id ? 'Modify' : 'Add',
-            primary: true,
-            keyboardFocused: true,
-            onTouchTap: this.saveClip,
-            disabled: !this.state.canSave
-        })];
-        var floatStyle = {
-            top: 25
-        };
-        return _react2['default'].createElement(
-            _materialUiLibDialog2['default'],
-            {
-                title: 'New Clip',
-                actions: actions,
-                open: this.props.open,
-                modal: true
-            },
-            _react2['default'].createElement(
-                'div',
-                null,
-                _react2['default'].createElement(_materialUiLibTextField2['default'], {
-                    id: 'name',
-                    hintText: 'Summer Vacations',
-                    errorText: this.state.errorName,
-                    floatingLabelText: 'Name',
-                    floatingLabelStyle: floatStyle,
-                    value: this.state.name,
-                    onChange: this._handleChange,
-                    fullWidth: true
-                }),
-                _react2['default'].createElement('br', null),
-                _react2['default'].createElement(_materialUiLibTextField2['default'], {
-                    id: 'startTime',
-                    hintText: '00:00:00',
-                    errorText: this.state.errorStart,
-                    floatingLabelText: 'Start time',
-                    floatingLabelStyle: floatStyle,
-                    value: this.state.startTime,
-                    onChange: this._handleChange
-                }),
-                _react2['default'].createElement('br', null),
-                _react2['default'].createElement(_materialUiLibTextField2['default'], {
-                    id: 'endTime',
-                    hintText: '00:00:00',
-                    errorText: this.state.errorEnd,
-                    floatingLabelText: 'End time',
-                    floatingLabelStyle: floatStyle,
-                    value: this.state.endTime,
-                    onChange: this._handleChange
-                }),
-                _react2['default'].createElement('br', null),
-                _react2['default'].createElement('br', null),
-                _react2['default'].createElement(
-                    'label',
-                    { 'class': 'mdl-textfield__label', 'for': 'tagsInput' },
-                    'Tags...'
-                ),
-                _react2['default'].createElement(_reactTagsinput2['default'], { id: 'tagsInput', value: this.state.tags, onChange: this._handleTags })
-            )
-        );
-    }
-});
-
-exports['default'] = _NewClip;
-module.exports = exports['default'];
-
-}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"inputmask-core":undefined,"material-ui/lib/dialog":undefined,"material-ui/lib/flat-button":undefined,"material-ui/lib/text-field":undefined,"moment":109,"moment-duration-format":108,"react-tagsinput":undefined}],261:[function(require,module,exports){
-(function (global){
-/**
- * Created by zerocooljs on 2/20/16.
- */
-'use strict';
-Object.defineProperty(exports, '__esModule', {
-    value: true
-});
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-var _react = (typeof window !== "undefined" ? window['React'] : typeof global !== "undefined" ? global['React'] : null);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _materialUiLibCardCard = require('material-ui/lib/card/card');
-
-var _materialUiLibCardCard2 = _interopRequireDefault(_materialUiLibCardCard);
-
-var _materialUiLibCardCardMedia = require('material-ui/lib/card/card-media');
-
-var _materialUiLibCardCardMedia2 = _interopRequireDefault(_materialUiLibCardCardMedia);
-
-var _materialUiLibLinearProgress = require('material-ui/lib/linear-progress');
-
-var _materialUiLibLinearProgress2 = _interopRequireDefault(_materialUiLibLinearProgress);
-
-var _materialUiLibStylesColors = require('material-ui/lib/styles/colors');
-
-var _materialUiLibStylesColors2 = _interopRequireDefault(_materialUiLibStylesColors);
-
-var _Video = _react2['default'].createClass({
-    displayName: '_Video',
-
-    componentDidUpdate: function componentDidUpdate() {
-        this.pauseVideo();
-        this.loadVideo();
-    },
-    getInitialState: function getInitialState() {
-        return {
-            loaded: false
-        };
-    },
-    componentWillReceiveProps: function componentWillReceiveProps(nextProps) {
-        if (nextProps.forceLoaded && nextProps.forceLoaded === true) {
-            this.setState({
-                loaded: nextProps.forceLoaded
-            });
-        }
-    },
-    pauseVideo: function pauseVideo() {
-        if (this.props.paused && !this._video.paused) {
-            return this._video.pause();
-        }
-    },
-    loadVideo: function loadVideo() {
-        if (this.props.loadVideo) {
-            this._video.load();
-        }
-    },
-    startLoaded: function startLoaded() {
-        this.setState({
-            loaded: true
-        });
-    },
-    endLoaded: function endLoaded() {
-        this.setState({
-            loaded: false
-        });
-    },
-    _trackLoad: function _trackLoad() {
-        var cues = track.track.cues,
-            cue,
-            df = document.createDocumentFragment(),
-            totalWidth = markers.offsetWidth,
-            duration = cues[cues.length - 1].endTime;
-        for (var i = 0; cue = cues[i]; i++) {
-            df.appendChild(createMarker(cue, Math.floor(cue.endTime - cue.startTime) / duration * totalWidth - 1));
-        }
-        markers.appendChild(df);
-    },
-    render: function render() {
-        var _this = this;
-
-        return _react2['default'].createElement(
-            _materialUiLibCardCard2['default'],
-            null,
-            _react2['default'].createElement(
-                _materialUiLibCardCardMedia2['default'],
-                null,
-                _react2['default'].createElement(
-                    'div',
-                    null,
-                    this.state.loaded ? _react2['default'].createElement(_materialUiLibLinearProgress2['default'], { mode: 'indeterminate', color: _materialUiLibStylesColors2['default'].pinkA700, style: { height: 7 } }) : null,
-                    _react2['default'].createElement(
-                        'video',
-                        {
-                            width: '100%',
-                            onTimeUpdate: this.props.onTimeupdate,
-                            ref: function (c) {
-                                _this._video = c;
-                            },
-                            onLoadedMetadata: this.props.onLoadMetaData,
-                            src: this.props.videoUrl,
-                            onLoadStart: this.startLoaded,
-                            onCanPlay: this.endLoaded,
-                            onError: this.endLoaded,
-                            onCanPlay: this.endLoaded,
-                            onSuspend: this.endLoaded,
-                            onPause: this.props.onPause,
-                            controls: true,
-                            autoPlay: true
-                        },
-                        _react2['default'].createElement('track', { src: 'chapters.vtt', kind: 'chapters', 'default': true, onloadeddata: this._trackLoad })
-                    )
-                )
-            )
-        );
-    }
-});
-
-exports['default'] = _Video;
-module.exports = exports['default'];
-
-}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"material-ui/lib/card/card":undefined,"material-ui/lib/card/card-media":undefined,"material-ui/lib/linear-progress":undefined,"material-ui/lib/styles/colors":undefined}]},{},[258])(258)
-});
+},{"./_Clips":258,"./_NewClip":259,"./_Video":260,"material-ui/lib/app-bar":undefined,"material-ui/lib/badge":undefined,"material-ui/lib/floating-action-button":undefined,"material-ui/lib/icon-button":undefined,"material-ui/lib/svg-icons/av/subscriptions":94,"material-ui/lib/svg-icons/content/add":undefined,"moment":109,"react":undefined,"react-hotkeys":undefined,"react-localstorage":undefined,"react-tap-event-plugin":undefined,"shortid":247,"underscore":256}]},{},[]);
