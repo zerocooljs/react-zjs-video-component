@@ -1,6 +1,6 @@
 {
   "name": "zjs-react-video",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "React component with the feature of save clips.",
   "main": "lib/ZjsReactVideo.js",
   "author": "Jose Santacruz",
