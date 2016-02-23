@@ -20,23 +20,39 @@ var _NewClip = React.createClass({
                 + moment.duration(value, 'seconds').format('H:mm:ss', {forceLength: true});
         }
         return startTime;
-    }, getInitialState(){
-        let startTime = this.getStartTime(this.props.startTime);
-        let id = this.props.id;
+    },
+    getInitialState(){
+        let clip = this.props.clip;
+        if (!clip) {
+            let startTime = this.getStartTime(this.props.startTime);
+            return {
+                startTime,
+                endTime: null,
+                name: null,
+                errorStart: null,
+                errorEnd: null,
+                errorName: null,
+                canSave: false,
+                id: null
+            }
+        }
+
         return {
-            startTime,
-            endTime: null,
-            name: null,
+            startTime: clip.startTime,
+            endTime: clip.endTime,
+            name: clip.name,
             errorStart: null,
             errorEnd: null,
             errorName: null,
             canSave: false,
-            id
+            id: clip.id
         }
+
+
     },
     saveClip(){
         this.props.onOk({
-            id:(this.state.id)?this.state.id:new Date().getUTCMilliseconds(),
+            id: this.state.id,
             name: this.state.name,
             startTime: this.state.startTime,
             endTime: this.state.endTime
@@ -45,9 +61,20 @@ var _NewClip = React.createClass({
     },
     componentWillReceiveProps(nextProps){
         let startTime = this.getStartTime(nextProps.startTime);
+        let clip      = nextProps.clip;
+        if(clip){
+            return this.setState({
+                startTime: clip.startTime,
+                endTime: clip.endTime,
+                name: clip.name,
+                id: clip.id,
+                canSave: true
+            });
+        }
         this.setState({
             startTime
         });
+
     },
     _handleChange(e){
         if (e.target.id === 'startTime' || e.target.id === 'endTime') {
@@ -172,7 +199,8 @@ var _NewClip = React.createClass({
             errorStart: null,
             errorEnd: null,
             errorName: null,
-            canSave: false
+            canSave: false,
+            id: null
         });
     },
     render()
@@ -184,7 +212,7 @@ var _NewClip = React.createClass({
                 onTouchTap={this._cancel}
             />,
             <FlatButton
-                label="Add"
+                label={(this.state.id)?'Modify':'Add'}
                 primary={true}
                 keyboardFocused={true}
                 onTouchTap={this.saveClip}
@@ -208,6 +236,7 @@ var _NewClip = React.createClass({
                         errorText={this.state.errorName}
                         floatingLabelText="Name"
                         floatingLabelStyle={floatStyle}
+                        value={this.state.name}
                         onChange={this._handleChange}
                         fullWidth={true}
                     />
@@ -228,6 +257,7 @@ var _NewClip = React.createClass({
                         errorText={this.state.errorEnd}
                         floatingLabelText="End time"
                         floatingLabelStyle={floatStyle}
+                        value={this.state.endTime}
                         onChange={this._handleChange}
                     />
                     <br/>

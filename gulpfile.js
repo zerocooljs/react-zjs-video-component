@@ -40,7 +40,14 @@ var config = {
             'material-ui/lib/svg-icons/navigation/more-vert',
             'material-ui/lib/menus/icon-menu',
             'material-ui/lib/menus/menu-item',
-            'material-ui/lib/svg-icons/action/theaters'
+            'material-ui/lib/svg-icons/action/theaters',
+            'material-ui/lib/svg-icons/av/play-circle-filled',
+            'material-ui/lib/svg-icons/editor/mode-edit',
+            'material-ui/lib/svg-icons/content/remove',
+            'material-ui/lib/svg-icons/av/videocam',
+            'material-ui/lib/linear-progress',
+            'react-hotkeys',
+            'react-localstorage'
         ],
         less: {
             path: 'less',

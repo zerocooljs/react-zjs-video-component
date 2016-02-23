@@ -5,7 +5,13 @@ var App = React.createClass({
 	render () {
 		return (
 			<div>
-				<ReactZjsVideoComponent videoUrl="http://grochtdreis.de/fuer-jsfiddle/video/sintel_trailer-480.mp4" />
+				<ReactZjsVideoComponent
+					videoUrl="http://grochtdreis.de/fuer-jsfiddle/video/sintel_trailer-480.mp4"
+					title="Video Demo"
+					name="demo"
+					edit={true}
+				/>
+				
 			</div>
 		);
 	}
