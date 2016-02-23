@@ -21,12 +21,13 @@ import Dialog from 'material-ui/lib/dialog';
 import FlatButton from 'material-ui/lib/flat-button';
 import moment from 'moment';
 import VideoCam from 'material-ui/lib/svg-icons/av/videocam';
-
+import TagsInput from 'react-tagsinput';
 
 var _Clips = React.createClass({
     toggleLeftNav(){
         "use strict";
         this.props.onToggle();
+        this.handleClose();
     },
     confirmDelete(e){
         this.setState({
@@ -37,8 +38,15 @@ var _Clips = React.createClass({
     getInitialState(){
         return {
             delete: false,
-            deleteItem: null
+            deleteItem: null,
+            tags: [],
+            clips: this.props.clips
         };
+    },
+    componentWillReceiveProps(nextProps){
+        this.setState({
+            clips: nextProps.clips
+        });
     },
     formatTime(value) {
         let startTime = value;
@@ -51,14 +59,44 @@ var _Clips = React.createClass({
         return startTime;
     },
     handleClose(){
+        let clips = this.state.clips.map((clip)=> {
+            delete clip.hide;
+            return clip
+        });
         this.setState({
             delete: false,
-            deleteItem: null
+            deleteItem: null,
+            clips,
+            tags: []
         });
     },
     handleDelete(){
         this.props.onClipDelete(this.state.deleteItem);
         this.handleClose();
+    },
+    _filterClips(tags){
+        this.setState({
+            tags
+        });
+        let init = true;
+        if(tags.length === 0){
+            init = false;
+        }
+        let clips = this.state.clips.map((clip)=> {
+            clip.hide = init;
+            return clip;
+        });
+        for (let tag of tags) {
+            clips = clips.map((clip)=> {
+                if (clip.tags.indexOf(tag)!== -1) {
+                    clip.hide = false;
+                }
+                return clip;
+            });
+        }
+        this.setState({
+            clips
+        });
     },
     render () {
         const iconButtonElement = (
@@ -86,9 +124,9 @@ var _Clips = React.createClass({
             />
         ];
 
-        let clips = this.props.clips.map((clip, index) => {
+        let clips = this.state.clips.map((clip, index) => {
             return (
-                <ListItem
+                (!clip.hide) ? <ListItem
                     key={clip.id}
                     id={index}
                     rightIconButton={
@@ -100,19 +138,22 @@ var _Clips = React.createClass({
                     }
                     leftIcon={<Theaters color={Colors.darkBlack} />}
                     onTouchTap={this.props.onClipTap}
-                    secondaryTextLines={1}
+                    secondaryTextLines={2}
                     primaryText={clip.name}
                     secondaryText={
                         <p>
-                          {clip.startTime} / {clip.endTime}
+                          {clip.startTime} / {clip.endTime}<br />
+                          {clip.tags.join()}
                         </p>
                     }
-                />
+                /> : null
             );
         });
         return (
-            <LeftNav width={400} docked={false} openRight={true} open={this.props.open}>
+            <LeftNav width={400} docked={false} openRight={true} open={this.props.open} >
                 <AppBar title="Clips" onLeftIconButtonTouchTap={this.toggleLeftNav}/>
+                <TagsInput value={this.state.tags} onChange={this._filterClips}/>
+                <Divider />
                 <List subheader="Full Video">
                     <ListItem
                         leftIcon={<VideoCam color={Colors.darkBlack} />}

@@ -47,7 +47,8 @@ var config = {
             'material-ui/lib/svg-icons/av/videocam',
             'material-ui/lib/linear-progress',
             'react-hotkeys',
-            'react-localstorage'
+            'react-localstorage',
+            'react-tagsinput'
         ],
         less: {
             path: 'less',

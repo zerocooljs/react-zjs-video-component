@@ -8,6 +8,7 @@ import FlatButton from 'material-ui/lib/flat-button';
 import TextField from 'material-ui/lib/text-field';
 import InputMask from 'inputmask-core';
 import moment from 'moment';
+import TagsInput from 'react-tagsinput';
 require('moment-duration-format');
 
 var _NewClip = React.createClass({
@@ -33,10 +34,10 @@ var _NewClip = React.createClass({
                 errorEnd: null,
                 errorName: null,
                 canSave: false,
-                id: null
+                id: null,
+                tags:[]
             }
         }
-
         return {
             startTime: clip.startTime,
             endTime: clip.endTime,
@@ -45,7 +46,8 @@ var _NewClip = React.createClass({
             errorEnd: null,
             errorName: null,
             canSave: false,
-            id: clip.id
+            id: clip.id,
+            tags: clip.tags
         }
 
 
@@ -55,7 +57,8 @@ var _NewClip = React.createClass({
             id: this.state.id,
             name: this.state.name,
             startTime: this.state.startTime,
-            endTime: this.state.endTime
+            endTime: this.state.endTime,
+            tags: this.state.tags
         });
         this._resetState();
     },
@@ -68,6 +71,7 @@ var _NewClip = React.createClass({
                 endTime: clip.endTime,
                 name: clip.name,
                 id: clip.id,
+                tags: clip.tags,
                 canSave: true
             });
         }
@@ -200,7 +204,13 @@ var _NewClip = React.createClass({
             errorEnd: null,
             errorName: null,
             canSave: false,
-            id: null
+            id: null,
+            tags: []
+        });
+    },
+    _handleTags(tags){
+        this.setState({
+            tags
         });
     },
     render()
@@ -261,6 +271,7 @@ var _NewClip = React.createClass({
                         onChange={this._handleChange}
                     />
                     <br/>
+                    <TagsInput value={this.state.tags} onChange={this._handleTags} />
                 </div>
 
             </Dialog>
