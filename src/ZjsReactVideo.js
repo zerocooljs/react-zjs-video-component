@@ -20,7 +20,7 @@ import Subscriptions from 'material-ui/lib/svg-icons/av/subscriptions';
 
 injectTapEventPlugin();
 
-var ReactZjsVideoComponent = React.createClass({
+var ZjsReactVideo = React.createClass({
     mixins: [ LocalStorageMixin ],
     toggleLeftNav(force){
         if (typeof force !== 'undefined') {
@@ -253,4 +253,4 @@ var ReactZjsVideoComponent = React.createClass({
     }
 });
 
-export default ReactZjsVideoComponent;
+export default ZjsReactVideo;

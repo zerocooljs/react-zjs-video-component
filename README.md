@@ -1,4 +1,4 @@
-# zjs-react-videoComponent
+# zjs-react-video
 
 __React component with the feature of save clips.__
 
@@ -19,12 +19,12 @@ Then open [`localhost:8000`](http://localhost:8000) in a browser.
 
 ## Installation
 
-The easiest way to use zjs-react-videoComponent is to install it from NPM and include it in your own React build process (using [Browserify](http://browserify.org), [Webpack](http://webpack.github.io/), etc).
+The easiest way to use zjs-react-video is to install it from NPM and include it in your own React build process (using [Browserify](http://browserify.org), [Webpack](http://webpack.github.io/), etc).
 
-You can also use the standalone build by including `dist/react-zjs-video-component.js` in your page. If you use this, make sure you have already included React, and it is available as a global variable.
+You can also use the standalone build by including `dist/zjs-react-video.js` in your page. If you use this, make sure you have already included React, and it is available as a global variable.
 
 ```
-npm install zjs-react-videoComponent --save
+npm install zjs-react-video --save
 ```
 
 
@@ -33,9 +33,9 @@ npm install zjs-react-videoComponent --save
 __You only have to import the component and use it.__
 
 ```
-import ZjsReactVideoComponent from 'zjs-react-videoComponent';
+import ZjsReactVideo from 'zjs-react-video';
 
-<ZjsReactVideoComponent
+<ZjsReactVideo
 	videoUrl="path/to/video.mp4"
 	title="Title of Video"
 	name="demo"

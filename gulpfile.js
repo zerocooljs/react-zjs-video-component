@@ -17,7 +17,7 @@ var connect       = require('gulp-connect');
 var config = {
 
     component: {
-        name: 'ReactZjsVideoComponent',
+        name: 'ZjsReactVideo',
         dependencies: [
             'classnames',
             'react',
@@ -53,7 +53,7 @@ var config = {
         ],
         less: {
             path: 'less',
-            entry: 'ReactZjsVideoComponent.less'
+            entry: 'ZjsReactVideo.js.less'
         },
         lib: 'lib'
     },
