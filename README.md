@@ -57,6 +57,7 @@ __Please include these 2 tags at the HEAD__
 ```
 <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="zjs-react-video.min.css">
 ```
 
 ## Development (`src`, `lib` and the build process)
