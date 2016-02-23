@@ -53,7 +53,7 @@ var config = {
         ],
         less: {
             path: 'less',
-            entry: 'ZjsReactVideo.js.less'
+            entry: 'ZjsReactVideo.less'
         },
         lib: 'lib'
     },
