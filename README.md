@@ -50,6 +50,15 @@ import ZjsReactVideoComponent from 'zjs-react-videoComponent';
 * __*name:* Unique name to keep persitent of clips.__
 * __*edit:* Set if you want that the component only reproduce clips.__
 
+### Notes
+
+__Please include these 2 tags at the HEAD__
+
+```
+<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+```
+
 ## Development (`src`, `lib` and the build process)
 
 **NOTE:** The source code for the component is in `src`. A transpiled CommonJS version (generated with Babel) is available in `lib` for use with node.js, browserify and webpack. A UMD bundle is also built to `dist`, which can be included without the need for any build system.
